@@ -1,10 +1,9 @@
 import { analyzeEntry } from "@/utils/ai";
 import { getUserByClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
-import { revalidatePath } from "next/cache";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (request: Request) => {
+export const POST = async (request: NextRequest) => {
   const { score, content, id } = await request.json();
   const user = await getUserByClerkID();
   if (!user) return;
@@ -29,8 +28,5 @@ export const POST = async (request: Request) => {
     },
   });
 
-  const path = `/entries/${id}`;
-  await revalidatePath(path);
-  console.log(entry);
   return NextResponse.json({ data: entry });
 };
