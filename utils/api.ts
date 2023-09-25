@@ -38,3 +38,18 @@ export const createNewReview = async (
     throw new Error("Something went wrong on API server!");
   }
 };
+
+export const deleteReview = async (id: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/reviews/${id}`), {
+      method: "DELETE",
+      body: id,
+    })
+  );
+
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Something went wrong on API server!");
+  }
+};

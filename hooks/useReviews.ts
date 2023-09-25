@@ -1,4 +1,4 @@
-import { createNewReview } from "@/utils/api";
+import { createNewReview, deleteReview } from "@/utils/api";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -14,10 +14,10 @@ export default function useReviews(entryId: string) {
     mutate();
   };
 
-  const deleteReview = async (id: string) => {
+  const removeReview = async (id: string) => {
     await deleteReview(id);
     mutate();
   };
 
-  return { data, isLoading, addNewReview, deleteReview };
+  return { data, isLoading, addNewReview, removeReview };
 }

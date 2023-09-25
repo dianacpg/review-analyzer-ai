@@ -1,6 +1,13 @@
+"use-client";
+import useReviews from "@/hooks/useReviews";
 import { Entry } from "@/types/entries";
 
 const ReviewCard = ({ entry }: { entry: Entry }) => {
+  const { removeReview } = useReviews(entry.id);
+
+  const handleDelete = async (id: string) => {
+    await removeReview(id);
+  };
   return (
     <div>
       <h1>Title: {entry?.title}</h1>
@@ -9,6 +16,12 @@ const ReviewCard = ({ entry }: { entry: Entry }) => {
         <h2>Reviews</h2>
         {entry?.reviews?.map((review) => (
           <div className="border border-indigo-400 m-2" key={review.id}>
+            <button
+              className="bg-slate-200"
+              onClick={async () => await removeReview(review.id)}
+            >
+              delete
+            </button>
             <p>score: {review.score}</p>
             <p>date:{review.createdAt}</p>
             <p>content: {review.content}</p>
