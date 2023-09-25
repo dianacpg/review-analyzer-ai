@@ -6,14 +6,18 @@ import {
 
 interface Entity {
   id: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export interface Entry extends PrismaEntry {
+export interface Entry
+  extends Omit<PrismaEntry, "createdAt" | "updatedAt">,
+    Entity {
   reviews?: Review[];
 }
 
-export interface Review extends PrismaReview {
+export interface Review
+  extends Omit<PrismaReview, "createdAt" | "updatedAt">,
+    Entity {
   analysis: PrismaAnalysis;
 }
