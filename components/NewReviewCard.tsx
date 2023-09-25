@@ -1,11 +1,12 @@
 "use client";
-import { createNewReview } from "@/utils/api";
+import useReviews from "@/hooks/useReviews";
 import React, { useState } from "react";
 
 const NewReviewCard = ({ entryId }: { entryId: string }) => {
+  const { addNewReview } = useReviews(entryId);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState({
-    score: 5,
+    score: "",
     content: "",
   });
 
@@ -22,8 +23,9 @@ const NewReviewCard = ({ entryId }: { entryId: string }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    await createNewReview(formData, entryId);
+    await addNewReview(formData);
     setIsOpen(false);
+    setFormData({ score: "", content: "" });
   };
 
   return (
@@ -42,6 +44,7 @@ const NewReviewCard = ({ entryId }: { entryId: string }) => {
               type="number"
               onChange={handleInputChange}
               max={10}
+              value={formData.score}
             ></input>
             <label>Content:</label>
             <textarea

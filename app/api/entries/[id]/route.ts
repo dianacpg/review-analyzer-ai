@@ -1,21 +1,24 @@
+import { RouteParams } from "@/types/route-params";
 import { getUserByClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 import { NextResponse } from "next/server";
 
-export const PATCH = async (request: Request, { params }) => {
-  const { title, description } = await request.json();
+export const GET = async (request: Request, { params }: RouteParams) => {
   const user = await getUserByClerkID();
   if (!user) return;
-
-  const updatedEntry = await prisma.entry.update({
+  const entry = await prisma.entry.findUnique({
     where: {
       userId_id: {
         userId: user.id,
         id: params.id,
       },
     },
-    data: { title, description },
+    include: {
+      reviews: {
+        include: { analysis: true },
+      },
+    },
   });
 
-  return NextResponse.json({ data: updatedEntry });
+  return NextResponse.json({ data: entry });
 };
