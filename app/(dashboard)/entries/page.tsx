@@ -1,9 +1,12 @@
+// Next
+import Link from "next/link";
+// Components
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
-import { Entry } from "@/types/entries";
+// Utils
 import { getUserByClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
-import Link from "next/link";
+import { isEntry } from "@/utils/type-guards/entries";
 
 const getEntries = async () => {
   const user = await getUserByClerkID();
@@ -20,7 +23,7 @@ const getEntries = async () => {
     },
   });
 
-  return entries as unknown as Entry[];
+  return entries;
 };
 
 const EntriesPage = async () => {
@@ -31,13 +34,16 @@ const EntriesPage = async () => {
       <h2>Entries</h2>
       <div className="grid grid-cols-3 gap-4">
         <NewEntryCard />
-        {data?.map((entry) => (
-          <div key={entry.id}>
-            <Link href={`/entries/${entry.id}`}>
-              <EntryCard entry={entry} />
-            </Link>
-          </div>
-        ))}
+        {data?.map((entry) => {
+          if (!isEntry(entry)) return;
+          return (
+            <div key={entry.id}>
+              <Link href={`/entries/${entry.id}`}>
+                <EntryCard entry={entry} />
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
