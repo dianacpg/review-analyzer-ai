@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { createNewEntry } from "@/utils/api";
+import { createNewEntry } from "@/lib/service/api";
 import { useRouter } from "next/navigation";
 
 const NewEntry = () => {

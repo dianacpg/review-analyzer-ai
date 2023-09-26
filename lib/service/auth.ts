@@ -1,7 +1,7 @@
 // associate clerkId with db id
 
+import { prisma } from "@/utils/db";
 import { auth } from "@clerk/nextjs";
-import { prisma } from "./db";
 
 export const getUserByClerkID = async () => {
   const { userId } = await auth();

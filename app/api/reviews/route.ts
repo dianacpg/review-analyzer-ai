@@ -1,5 +1,5 @@
-import { analyzeEntry } from "@/utils/ai";
-import { getUserByClerkID } from "@/utils/auth";
+import { analyzeEntry } from "@/lib/service/ai";
+import { getUserByClerkID } from "@/lib/service/auth";
 import { prisma } from "@/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 

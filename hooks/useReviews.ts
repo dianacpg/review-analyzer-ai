@@ -1,4 +1,4 @@
-import { createNewReview, deleteReview } from "@/utils/api";
+import { createNewReview, deleteReview } from "@/lib/service/api";
 import useSWR from "swr";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());

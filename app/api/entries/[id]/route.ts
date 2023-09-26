@@ -1,5 +1,5 @@
 import { RouteParams } from "@/types/route-params";
-import { getUserByClerkID } from "@/utils/auth";
+import { getUserByClerkID } from "@/lib/service/auth";
 import { prisma } from "@/utils/db";
 import { NextResponse } from "next/server";
 

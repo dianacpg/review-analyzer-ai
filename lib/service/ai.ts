@@ -14,7 +14,7 @@ const parser = StructuredOutputParser.fromZodSchema(
   })
 );
 
-const getPrompt = async (content) => {
+const getPrompt = async (content: string) => {
   const format_instructions = parser.getFormatInstructions();
   console.log("FORMAT_INSTRUCTIONS", format_instructions);
   const prompt = new PromptTemplate({
