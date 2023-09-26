@@ -1,7 +1,10 @@
 "use client";
+// Components
 import NewReviewCard from "@/components/NewReviewCard";
 import ReviewCard from "@/components/ReviewCard";
+// Hooks
 import useReviews from "@/hooks/useReviews";
+// Types
 import { RouteParams } from "@/types/route-params";
 
 const EntryPage = ({ params }: RouteParams) => {
