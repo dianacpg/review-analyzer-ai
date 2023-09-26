@@ -4,20 +4,10 @@ import {
   Analysis as PrismaAnalysis,
 } from "@prisma/client";
 
-interface Entity {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Entry
-  extends Omit<PrismaEntry, "createdAt" | "updatedAt">,
-    Entity {
+export interface Entry extends PrismaEntry {
   reviews?: Review[];
 }
 
-export interface Review
-  extends Omit<PrismaReview, "createdAt" | "updatedAt">,
-    Entity {
+export interface Review extends PrismaReview {
   analysis: PrismaAnalysis;
 }
