@@ -1,6 +1,6 @@
 import { RouteParams } from "@/types/route-params";
 import { getUserByClerkID } from "@/lib/service/auth";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async (request: Request, { params }: RouteParams) => {

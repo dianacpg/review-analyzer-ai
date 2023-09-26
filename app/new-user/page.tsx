@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/utils/db";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 

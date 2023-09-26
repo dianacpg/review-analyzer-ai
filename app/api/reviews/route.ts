@@ -1,6 +1,6 @@
 import { analyzeEntry } from "@/lib/service/ai";
 import { getUserByClerkID } from "@/lib/service/auth";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/utils/db";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {

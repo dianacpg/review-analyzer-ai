@@ -1,5 +1,5 @@
 import { RouteParams } from "@/types/route-params";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/utils/db";
 import { NextResponse } from "next/server";
 
 export const DELETE = async (request: Request, { params }: RouteParams) => {

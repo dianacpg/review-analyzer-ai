@@ -4,8 +4,8 @@ import Link from "next/link";
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 // Utils
-import { prisma } from "@/utils/db";
-import { isEntry } from "@/utils/type-guards/entries";
+import { prisma } from "@/lib/utils/db";
+import { isEntry } from "@/lib/utils/type-guards/entries";
 import { getUserByClerkID } from "@/lib/service/auth";
 
 const getEntries = async () => {

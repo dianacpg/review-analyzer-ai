@@ -1,5 +1,5 @@
 import { getUserByClerkID } from "@/lib/service/auth";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/utils/db";
 import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
