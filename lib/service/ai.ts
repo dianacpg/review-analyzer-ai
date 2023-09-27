@@ -41,11 +41,11 @@ export const analyzeEntry = async (entry: string) => {
     return parser.parse(output);
   } catch (e) {
     console.log(e);
-    /*     const fixParser = OutputFixingParser.fromLLM(
+    const fixParser = OutputFixingParser.fromLLM(
       new OpenAI({ temperature: 0, modelName: "gpt-3.5-turbo" }),
       parser
-    ); */
-    /*     const fix = await fixParser.parse(output);
-    return fix; */
+    );
+    const fix = await fixParser.parse(output);
+    return fix;
   }
 };
