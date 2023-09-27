@@ -15,6 +15,6 @@ export const POST = async (request: NextRequest) => {
     },
   });
   const path = "/entries/";
-  await revalidatePath(path);
+  revalidatePath(path);
   return NextResponse.json({ data: entry });
 };
