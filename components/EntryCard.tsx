@@ -6,10 +6,20 @@ interface EntryCardProps {
 
 const EntryCard = ({ entry }: EntryCardProps) => {
   return (
-    <div className="border border-indigo-600">
-      <h2>Title: {entry.title}</h2>
-      <p>Created at: {entry.createdAt.toLocaleDateString()}</p>
-      <p>Reviews: {entry.reviews?.length || 0}</p>
+    <div
+      className="overflow-hidden rounded-lg
+     bg-gray-100 border
+     shadow-inner p-5 cursor-pointer"
+    >
+      <h3>
+        <b>Title:</b> {entry.title}
+      </h3>
+      <p>
+        <b>Created at:</b> {entry.createdAt.toLocaleDateString()}
+      </p>
+      <p>
+        <b>Reviews:</b> {entry.reviews?.length}
+      </p>
     </div>
   );
 };

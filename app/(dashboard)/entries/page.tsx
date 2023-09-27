@@ -31,8 +31,8 @@ const EntriesPage = async () => {
 
   return (
     <div>
-      <h2>Entries</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <h1 className="text-2xl text-gray-800 font-semibold">Entries</h1>
+      <div className="flex flex-col gap-5">
         <NewEntryCard />
         {data?.map((entry) => {
           if (!isEntry(entry)) return;

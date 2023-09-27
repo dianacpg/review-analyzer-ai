@@ -4,13 +4,16 @@ import { ReactNode } from "react";
 import { UserButton } from "@clerk/nextjs";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => (
-  <div>
-    <header>
-      <div className="h-full w-full px-6 flex items-center justify-end">
+  <div className="min-h-screen">
+    <header className="bg-gray-50 p-4">
+      <div className="container mx-auto flex items-center justify-between">
+        <h1 className="text-2xl text-gray-800 font-semibold">
+          Review AI Analyzer
+        </h1>
         <UserButton />
       </div>
     </header>
-    {children}
+    <main className="container mx-auto p-4">{children}</main>
   </div>
 );
 

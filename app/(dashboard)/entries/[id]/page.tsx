@@ -1,7 +1,7 @@
 "use client";
 // Components
 import NewReviewCard from "@/components/NewReviewCard";
-import ReviewCard from "@/components/ReviewCard";
+import ReviewSection from "@/components/ReviewSection";
 // Hooks
 import useReviews from "@/hooks/useReviews";
 // Types
@@ -11,14 +11,14 @@ const EntryPage = ({ params }: RouteParams) => {
   const { data: entry, isLoading } = useReviews(params.id);
 
   return (
-    <div className="border border-indigo-600">
+    <div className="flex flex-col gap-">
       {isLoading ? (
         <div>loading...</div>
       ) : (
-        <>
-          <ReviewCard entry={entry.data} />
+        <div className="flex flex-col gap-5">
           <NewReviewCard entryId={params.id} />
-        </>
+          <ReviewSection entry={entry.data} />
+        </div>
       )}
     </div>
   );

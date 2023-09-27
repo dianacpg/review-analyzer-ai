@@ -27,31 +27,46 @@ const NewEntry = () => {
   };
 
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow">
+    <div
+      className={`overflow-hidden rounded-lg ${
+        !isOpen ? "bg-blue-100 cursor-pointer" : "bg-gray-100"
+      } shadow-inner`}
+    >
       <div className="px-4 py-5 sm:p-6">
         {!isOpen ? (
-          <button className="text-3xl" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className="w-full text-xl font-bold"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             New Entry
           </button>
         ) : (
-          <form onSubmit={handleSubmit}>
-            <label>Title:</label>
-            <input
-              className="border border-indigo-600"
-              name="title"
-              type="text"
-              onChange={handleInputChange}
-              required
-            ></input>
-            <label>Description:</label>
-            <input
-              className="border border-indigo-600"
-              name="description"
-              type="text"
-              onChange={handleInputChange}
-              required
-            ></input>
-            <button className="bg-gray-300 p-2 m-2" type="submit">
+          <form onSubmit={handleSubmit} className="space-y-4 cursor-default">
+            <h2 className="text-xl font-bold">Create New Entry</h2>
+            <div>
+              <label className="block">Title:</label>
+              <input
+                className="w-full border border-indigo-600 px-3 py-2 rounded"
+                name="title"
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div>
+              <label className="block">Description:</label>
+              <input
+                className="w-full border border-indigo-600 px-3 py-2 rounded"
+                name="description"
+                type="text"
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <button
+              className="bg-gray-300 rounded-full px-4 py-2"
+              type="submit"
+            >
               Create
             </button>
           </form>

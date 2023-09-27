@@ -29,38 +29,39 @@ const NewReviewCard = ({ entryId }: { entryId: string }) => {
   };
 
   return (
-    <div className="overflow-hidden rounded-lg bg-white shadow">
-      <div className="px-4 py-5 sm:p-6">
-        {!isOpen ? (
-          <button className="text-3xl" onClick={() => setIsOpen(!isOpen)}>
-            New Review
+    <div>
+      {!isOpen ? (
+        <button
+          className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full text-lg font-semibold"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Add Review
+        </button>
+      ) : (
+        <form onSubmit={handleSubmit} className="bg-blue-50 p-5 rounded-xl">
+          <label>Score</label>
+          <input
+            className="w-full border border-indigo-600 px-3 py-2 rounded"
+            name="score"
+            type="number"
+            onChange={handleInputChange}
+            max={10}
+            value={formData.score}
+            required
+          ></input>
+          <label>Content:</label>
+          <textarea
+            className="w-full border border-indigo-600 px-3 py-2 rounded"
+            name="content"
+            onChange={handleInputChange}
+            value={formData.content}
+            required
+          ></textarea>
+          <button className="bg-gray-300 rounded-full px-4 py-2" type="submit">
+            Create
           </button>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <label>Score</label>
-            <input
-              className="border border-indigo-600"
-              name="score"
-              type="number"
-              onChange={handleInputChange}
-              max={10}
-              value={formData.score}
-              required
-            ></input>
-            <label>Content:</label>
-            <textarea
-              className="border border-indigo-600"
-              name="content"
-              onChange={handleInputChange}
-              value={formData.content}
-              required
-            ></textarea>
-            <button className="bg-gray-300 p-2 m-2" type="submit">
-              Create
-            </button>
-          </form>
-        )}
-      </div>
+        </form>
+      )}
     </div>
   );
 };
