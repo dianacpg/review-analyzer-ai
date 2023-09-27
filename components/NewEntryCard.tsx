@@ -41,6 +41,7 @@ const NewEntry = () => {
               name="title"
               type="text"
               onChange={handleInputChange}
+              required
             ></input>
             <label>Description:</label>
             <input
@@ -48,6 +49,7 @@ const NewEntry = () => {
               name="description"
               type="text"
               onChange={handleInputChange}
+              required
             ></input>
             <button className="bg-gray-300 p-2 m-2" type="submit">
               Create

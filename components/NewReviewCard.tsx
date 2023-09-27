@@ -45,6 +45,7 @@ const NewReviewCard = ({ entryId }: { entryId: string }) => {
               onChange={handleInputChange}
               max={10}
               value={formData.score}
+              required
             ></input>
             <label>Content:</label>
             <textarea
@@ -52,6 +53,7 @@ const NewReviewCard = ({ entryId }: { entryId: string }) => {
               name="content"
               onChange={handleInputChange}
               value={formData.content}
+              required
             ></textarea>
             <button className="bg-gray-300 p-2 m-2" type="submit">
               Create
