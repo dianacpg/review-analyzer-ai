@@ -18,3 +18,8 @@ Welcome to the Review AI Analyzer! Share your product or topic reviews, and our 
 - Tailwind;
 - Prisma;
 - MySQL;
+
+## To Do:
+- Add score input into review prompt;
+- Add most used positive, bad, and improvements from each entry using memory model;
+- Add chart to follow review progress along time;
