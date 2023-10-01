@@ -4,12 +4,13 @@ export const createNewEntry = async (formData: {
   title: string;
   description: string;
 }) => {
-  const res = await fetch(
-    new Request(createURL("/api/entries"), {
-      method: "POST",
-      body: JSON.stringify(formData),
-    })
-  );
+  const res = await fetch(createURL("/api/entries"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
 
   if (res.ok) {
     return res.json();
@@ -25,12 +26,13 @@ export const createNewReview = async (
   },
   id: string
 ) => {
-  const res = await fetch(
-    new Request(createURL("/api/reviews"), {
-      method: "POST",
-      body: JSON.stringify({ ...formData, id }),
-    })
-  );
+  const res = await fetch(createURL("/api/reviews"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...formData, id }),
+  });
 
   if (res.ok) {
     return res.json();
@@ -40,12 +42,10 @@ export const createNewReview = async (
 };
 
 export const deleteReview = async (id: string) => {
-  const res = await fetch(
-    new Request(createURL(`/api/reviews/${id}`), {
-      method: "DELETE",
-      body: id,
-    })
-  );
+  const res = await fetch(createURL(`/api/reviews/${id}`), {
+    method: "DELETE",
+    body: id,
+  });
 
   if (res.ok) {
     return res.json();
