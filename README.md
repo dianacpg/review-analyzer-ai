@@ -22,6 +22,7 @@ Welcome to the Review AI Analyzer! Share your product or topic reviews, and our 
 - Tailwind;
 - Prisma;
 - MySQL;
+- PlanetScale;
 
 ## To Do:
 
@@ -30,7 +31,7 @@ Welcome to the Review AI Analyzer! Share your product or topic reviews, and our 
 - Add chart to follow review progress along time;
 - Complete test implementation
 
-## Setup
+## Setup locally
 
 Clone repository:
 
@@ -61,10 +62,20 @@ Create OpenAI account and add secret in .env.local:
 OPENAI_API_KEY=XXXXXXX
 ```
 
-Connect db by adding secret in .env:
+Database was created using [PlanetScale](https://planetscale.com/docs/prisma/prisma-quickstart), MySQL-compatible serverless database, that has a great developer experience. To do that, create an account, a database, install [planetscale CLI](https://github.com/planetscale/cli#installation) and connect by running:
 
 ```
-DATABASE_URL = XXXXXXX
+pscale auth login
+
+pscale connect <YOUR_DATABASE_NAME> <YOUR_BRANCH> — port 3309
+```
+
+,
+
+Connect db with prisma by adding secret in .env as in [planetscale documentation](https://planetscale.com/docs/prisma/prisma-quickstart)
+
+```
+DATABASE_URL = 'mysql://root@127.0.0.1:3309/<YOUR_DATABASE_NAME>'
 ```
 
 Run server
